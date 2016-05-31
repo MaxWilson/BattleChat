@@ -42,11 +42,13 @@ var server = new WebpackDevServer(compiler, {
     }
 });
 
-server.listen(3333, 'localhost', function (err) {
+var port = process.env.PORT || 3333;
+
+server.listen(port, 'localhost', function (err) {
   if (err) {
     console.log(err);
     return;
   }
 
-  console.log("Listening at http://localhost:3333. Please wait, I'm building things for you...");
+  console.log("Listening at http://localhost:"+port+". Please wait, I'm building things for you...");
 });
