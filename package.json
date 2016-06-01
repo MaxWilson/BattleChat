@@ -7,15 +7,17 @@
     "url": "git+https://github.com/pepaar/typescript-webpack-react-flux-boilerplate.git"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node app.js",
+    "go": "node server.js",
     "build": "webpack",
     "watch": "webpack -w",
     "test": "karma start karma.conf.js",
-	"test-debug": "karma start karma.conf.js --single-run=false --debug --auto-watch",
+    "test-debug": "karma start karma.conf.js --single-run=false --debug --auto-watch",
     "test-browser": "karma start karma.conf.js --browsers=Chrome",
     "test-browser-debug": "karma start karma.conf.js --browsers=Chrome --single-run=false --debug --auto-watch"
   },
   "dependencies": {
+    "express": "^4.13.4",
     "flux": "~2.1.1",
     "react": "~0.14.7",
     "react-dom": "~0.14.7"
