@@ -7,7 +7,7 @@ import SayHelloAction from "../Actions/SayHelloAction";
 class CommonStore extends BaseStore {
     private bodyTitle: string;
     private bodySummary: string;
-    private sayHelloCount: number = 0;
+    private messages: string[] = [];
 
     constructor() {
         super();
@@ -26,8 +26,8 @@ class CommonStore extends BaseStore {
         return this.bodySummary;
     };
 
-    getSayHelloCount(): number {
-        return this.sayHelloCount;
+    getGreeting(): string {
+        return this.messages.join(", ");
     };
 
     private processActions(action: IAction): void {
@@ -37,7 +37,7 @@ class CommonStore extends BaseStore {
             this.emitChange();
 
         } else if (action instanceof SayHelloAction) {
-            this.sayHelloCount++;
+            this.messages.push("Hello");
             this.emitChange();
 
         }

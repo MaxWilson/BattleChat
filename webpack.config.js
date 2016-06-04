@@ -40,8 +40,8 @@ var config = {
   },
 
   output: {
-      path: path.join(__dirname, 'build'),
-      filename: '[name]_[chunkhash].js'
+      path: path.join(__dirname, 'js'),
+      filename: '[name].js'
   },
 
   module: {

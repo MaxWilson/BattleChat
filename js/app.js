@@ -128,14 +128,14 @@ webpackJsonp([0],{
 	        var headerTitle = "Welcome to Lorem Ipsum";
 	        return React.createElement("div", { className: styles.container }, React.createElement(_ContentHeader2.default, { isActive: true, title: headerTitle }), React.createElement(_ContentBody2.default, { ref: "contentBodyRef", title: this.state.bodyTitle, summary: this.state.bodySummary }, React.createElement("div", { className: styles.hello }, React.createElement("button", { onClick: function onClick() {
 	                return _this2.onButtonClick();
-	            } }, "Say Hello!"), React.createElement("span", null, " You said hello ", this.state.sayHelloCount, " time(s)"))));
+	            } }, "Say Hello!"), React.createElement("span", null, " You said ", this.state.greeting ? "'" + this.state.greeting + "'" : "nothing", "."))));
 	    };
 
 	    ContentPage.prototype.getState = function getState() {
 	        return {
 	            bodyTitle: _CommonStore2.default.getBodyTitle(),
 	            bodySummary: _CommonStore2.default.getBodySummary(),
-	            sayHelloCount: _CommonStore2.default.getSayHelloCount()
+	            greeting: _CommonStore2.default.getGreeting()
 	        };
 	    };
 
@@ -726,7 +726,7 @@ webpackJsonp([0],{
 
 	        var _this = babelHelpers.possibleConstructorReturn(this, _BaseStore.call(this));
 
-	        _this.sayHelloCount = 0;
+	        _this.messages = [];
 	        _Dispatcher2.default.register(function (action) {
 	            return _this.processActions(action);
 	        });
@@ -744,8 +744,8 @@ webpackJsonp([0],{
 	        return this.bodySummary;
 	    };
 
-	    CommonStore.prototype.getSayHelloCount = function getSayHelloCount() {
-	        return this.sayHelloCount;
+	    CommonStore.prototype.getGreeting = function getGreeting() {
+	        return this.messages.join(", ");
 	    };
 
 	    CommonStore.prototype.processActions = function processActions(action) {
@@ -754,7 +754,7 @@ webpackJsonp([0],{
 	            this.bodySummary = action.bodySummary;
 	            this.emitChange();
 	        } else if (action instanceof _SayHelloAction2.default) {
-	            this.sayHelloCount++;
+	            this.messages.push("Hello");
 	            this.emitChange();
 	        }
 	    };

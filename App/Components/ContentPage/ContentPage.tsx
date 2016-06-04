@@ -12,7 +12,7 @@ const styles: any = require("./ContentPage.module.less");
 interface IContentPageState {
    bodyTitle: string;
    bodySummary: string;
-   sayHelloCount: number;
+   greeting: string;
 }
 
 export default class ContentPage extends SmartComponent<{}, IContentPageState> {
@@ -27,8 +27,8 @@ export default class ContentPage extends SmartComponent<{}, IContentPageState> {
                    <ContentHeader isActive={true} title={headerTitle} />
                    <ContentBody ref="contentBodyRef" title={this.state.bodyTitle} summary={this.state.bodySummary}>
                        <div className={styles.hello}>
-                           <button onClick={() => this.onButtonClick()}>Say Hello!</button>
-                           <span> You said hello {this.state.sayHelloCount} time(s)</span>
+                    <button onClick={() => this.onButtonClick() }>Say Hello!</button>
+                    <span> You said {this.state.greeting ? `'${this.state.greeting}'` : "nothing"}.</span>
                        </div>
                    </ContentBody>
                </div>;
@@ -38,7 +38,7 @@ export default class ContentPage extends SmartComponent<{}, IContentPageState> {
         return {
             bodyTitle: CommonStore.getBodyTitle(),
             bodySummary: CommonStore.getBodySummary(),
-            sayHelloCount: CommonStore.getSayHelloCount()
+            greeting: CommonStore.getGreeting()
         };
     }
 
